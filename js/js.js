@@ -1,23 +1,27 @@
-btn.addEventListener("click",clk);
+const messages = [
+    "Are you sure?",
+    "Really sure??",
+    "Are you positive?",
+    "Pookie please...",
+    "Just think about it!",
+    "If you say no, I will be really sad...",
+    "I will be very sad...",
+    "I will be very very very sad...",
+    "Ok fine, I will stop asking...",
+    "Just kidding, say yes please! ❤️"
+];
 
-function clk(){
-    n1 = Number(in1.value);
-    n2 = Number(in2.value);
-    if (act.value == '+'){
-        res = n1+n2;
-    }
+let messageIndex = 0;
 
-    if (act.value == '-'){
-        res = n1-n2;
-    }
+function handleNoClick() {
+    const noButton = document.querySelector('.no-button');
+    const yesButton = document.querySelector('.yes-button');
+    noButton.textContent = messages[messageIndex];
+    messageIndex = (messageIndex + 1) % messages.length;
+    const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
+    yesButton.style.fontSize = `${currentSize * 1.5}px`;
+}
 
-    if (act.value == '*'){
-        res = n1*n2;
-    }
-
-    if (act.value == '/'){
-        res = n1/n2;
-    }
-
-    result.innerHTML= res;
+function handleYesClick() {
+    window.location.href = "yes_page.html";
 }
